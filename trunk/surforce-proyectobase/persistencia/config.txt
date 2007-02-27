@@ -1,0 +1,4 @@
+usuario = root
+clave = root
+host = localhost
+base = proyectobase
