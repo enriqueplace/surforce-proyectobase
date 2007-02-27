@@ -1,0 +1,13 @@
+<div><b><!--{$titulo}--></b></div>
+
+<div>
+	<table border="1" > 
+	<!--{foreach from=$usuarios item=linea}-->
+		<tr>
+	  		<td  class="listados"><a href="mostrar_usuario.php?id=<!--{$linea.id}-->"><!--{$linea.id}--></A></td>
+	  		<td> <!--{$linea.nombre}--></td>
+	  		<td><!--{$linea.ingreso}--></td>
+	  	</tr>
+	<!--{/foreach}-->
+	</table>
+</div>
