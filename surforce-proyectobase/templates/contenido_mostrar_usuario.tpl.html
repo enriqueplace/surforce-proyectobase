@@ -1,0 +1,22 @@
+<div><b><!--{$titulo}--></b></div>
+
+<div>
+	<table border="1"> 
+		<tr>		
+			<td>usuario</td>
+	  		<td>nombre</td>
+	  		<td>ingreso</td>
+	  	</tr>
+	  	<tr>
+	<!--{if is_object($usuario) }-->			
+	  		<td><!--{$usuario->getId()}--></td>
+	  		<td> <!--{$usuario->getNombre()}--></td>
+	  		<td><!--{$usuario->getIngreso()}--></td>	  	
+	<!--{else}-->
+	  		<td><!--{$usuario.id}--></td>
+	  		<td> <!--{$usuario.nombre}--></td>
+	  		<td><!--{$usuario.ingreso}--></td> 
+	<!--{/if}-->
+		</tr>
+	</table>
+</div>
