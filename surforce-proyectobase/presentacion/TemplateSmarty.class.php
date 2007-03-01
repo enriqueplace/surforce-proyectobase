@@ -1,5 +1,6 @@
-<?
-require_once("Smarty/libs/Smarty.class.php");
+<?php
+require_once 'configuracion.php';
+require_once(SMARTY . DIRECTORY_SEPARATOR . "libs/Smarty.class.php");
 
 /*Heredamos de Smarty todos sus atributos y métodos, pero en
  * la construcción del objeto definimos un comportamiento por defecto
