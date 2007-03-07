@@ -1,4 +1,42 @@
-body {
-    background-color : #ffffff;
+BODY {
+	background-color : #ffffff;
     color : #000000;
-  }
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	margin:0;
+	padding:0;
+}
+
+DIV{
+  	padding:4px;
+	background-color:#FBFBFB;
+	width:100%;
+	margin-bottom:10px;;
+	border-bottom:1px dashed #CCCCCC;
+	border-top:1px dashed #CCCCCC;
+}
+
+DIV#pie{
+
+	text-align:center;
+	padding-top:5px;
+	border-top:1px dashed #CCCCCC;
+	margin:0;
+	clear: both;
+	margin-top:10px;;
+}
+DIV#cabezal{
+	margin:0 auto;
+	padding:10px;
+	background-color:#DFFFFF;
+	border:1px dashed #CCCCCC;
+}
+
+DIV#menu{
+	width:180px;
+	margin:0 auto;
+	float:left;
+	padding:10px;
+	background-color:#FDF7F2;
+	border:1px dashed #CCCCCC;
+}
