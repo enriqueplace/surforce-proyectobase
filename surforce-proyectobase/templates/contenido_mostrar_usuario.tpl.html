@@ -1,4 +1,4 @@
-<div><b><!--{$titulo}--></b></div>
+<b><!--{$titulo}--></b>
 
 <div>
 	<table border="1"> 
@@ -6,16 +6,19 @@
 			<td>usuario</td>
 	  		<td>nombre</td>
 	  		<td>ingreso</td>
+	  		<td>descripción</td>
 	  	</tr>
 	  	<tr>
 	<!--{if is_object($usuario) }-->			
 	  		<td><!--{$usuario->getId()}--></td>
 	  		<td> <!--{$usuario->getNombre()}--></td>
 	  		<td><!--{$usuario->getIngreso()}--></td>	  	
+	  		<td><!--{$usuario->getDescripcion()}--></td>	  	
 	<!--{else}-->
 	  		<td><!--{$usuario.id}--></td>
 	  		<td> <!--{$usuario.nombre}--></td>
 	  		<td><!--{$usuario.ingreso}--></td> 
+	  		<td><!--{$usuario.descripcion}--></td> 
 	<!--{/if}-->
 		</tr>
 	</table>
