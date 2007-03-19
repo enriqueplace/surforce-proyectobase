@@ -100,7 +100,7 @@ class SentenciaSQL {
 					// Si no es la primera vez, tambien se le agrega
 					// una coma antes del item
 					else{
-						$res.= ",".$w;
+						$res.= " AND ".$w;
 					}
 					$cont = $cont +1;
 				}

@@ -1,6 +1,6 @@
 <?php
 require_once( "configuracion.php" );
-require_once( FWK."/Persona.class.php" );
+require_once( FWK . DIRECTORY_SEPARATOR . "Persona.class.php" );
 
 class Usuario extends Persona{
 	private $id;
@@ -10,6 +10,7 @@ class Usuario extends Persona{
 
     public function getId(){return $this->id;}
     public function getIngreso(){return $this->ingreso;}
+    public function getDescripcion(){return $this->descripcion;}
 
     public function __construct($id, $nombre, $descripcion, $ingreso){
     	$this->id = $id;
