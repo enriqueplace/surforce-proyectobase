@@ -1,6 +1,16 @@
 <?php
-require_once( 'configuracion.php' );
-require_once( PRE."/PresentacionFachada.class.php" );
 
-PresentacionFachada::consultarUsuario();
+class ConsultarUsuario{
+	public function __construct(){
+		require_once( 'configuracion.php' );		
+	}
+	public function ejecutar(){
+		require_once( PRE . DIRECTORY_SEPARATOR . "PresentacionFachada.class.php" );
+		PresentacionFachada::consultarUsuario();		
+	}
+}
+
+$ConsultarUsuario = new ConsultarUsuario();
+$ConsultarUsuario->ejecutar();
+
 ?>

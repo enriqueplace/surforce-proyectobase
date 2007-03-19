@@ -2,7 +2,7 @@ function validar(){
       var frm = document.forms["form1"];
       var msg = new String();
 
-      if(frm.id.value =="" && frm.nombre.value ==""){
+      if(frm.id.value =="" && frm.nombre.value =="" && frm.descripcion.value ==""){
          msg = "Debe ingresar informacion en alguno de los campos";
       }
 

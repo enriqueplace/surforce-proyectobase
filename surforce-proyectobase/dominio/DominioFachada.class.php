@@ -1,6 +1,7 @@
 <?php
 require_once 'configuracion.php';
-require_once (PER."/PersistenciaFachada.class.php");
+require_once (PER . DIRECTORY_SEPARATOR . "PersistenciaFachada.class.php");
+require_once (DOM . DIRECTORY_SEPARATOR . "Usuario.class.php");
 
 /*
  * Aquí se resolverá todo el trabajo del Dominio, y desde fuera del mismo
@@ -12,16 +13,22 @@ abstract class DominioFachada {
 		return PersistenciaFachada::traerUsuarios();
 	}
 	/** Retorna un array con hash */
-	public function traerUsuarioPorId($id){
+	public function traerUsuarioPorId($id){		
 		return PersistenciaFachada::traerUsuarioPorId($id);
 	}
 	/** Retorna un objeto único de tipo Usuario */
 	public function traerObjetoUsuarioPorId($id){
-		require_once (DOM."/Usuario.class.php");
-
-		$arr = PersistenciaFachada::traerUsuarioPorId($id);
-
-		$unUsuario = new Usuario($arr['id'], $arr['nombre'], $arr['descripcion'], $arr['ingreso']);
+		$encontrados = PersistenciaFachada::traerUsuarioPorId($id);
+		foreach( $encontrados as $usuario){
+			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);	
+		}
+		return $unUsuario;
+	}
+	public function traerObjetoUsuario( $request ){
+		$encontrados = PersistenciaFachada::traerUsuario( $request );
+		foreach( $encontrados as $usuario){
+			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);	
+		}
 		return $unUsuario;
 	}
 }

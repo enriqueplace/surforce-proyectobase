@@ -13,24 +13,44 @@ require_once 'configuracion.php';
 
 abstract class PersistenciaFachada {
 
-	public function traerUsuarios(){
-		require_once (FWK."/BaseDeDatos.class.php");
-		$miBD = new BaseDeDatos(PER."/config.txt");
+	private function ejecutarSQL( $sql ){
+		require_once( FWK . DIRECTORY_SEPARATOR . "BaseDeDatos.class.php");
+		$miBD = new BaseDeDatos( PER . DIRECTORY_SEPARATOR . "config.txt");
 		$miBD->conectar();
-		$miBD->ejecutarSQL("select * from usuarios;");
+		$miBD->ejecutarSQL( $sql );
 		$resultado = $miBD->traerTodo();
 		$miBD->desconectar();
 		return $resultado;
 	}
-	public function traerUsuarioPorId($par){
+	public function traerUsuarios(){		
+		return self::ejecutarSQL("SELECT * FROM usuarios;");		
+	}
+	public function traerUsuarioPorId($id){	
+		return self::ejecutarSQL("SELECT * FROM usuarios WHERE id='".$id."';");		
+	}
+	public function traerUsuario( $request ){
+		require_once( FWK . DIRECTORY_SEPARATOR . "SentenciaSQL.class.php");
+		$SentenciaSQL = new SentenciaSQL();
+		
+		// Consulta base	
+		$SentenciaSQL->addSelect("id");
+		$SentenciaSQL->addSelect("nombre");
+		$SentenciaSQL->addSelect("descripcion");
+		$SentenciaSQL->addSelect("ingreso");
+		$SentenciaSQL->addFrom("usuarios");
+	
+		if( $request['id'] != ''){
+			$SentenciaSQL->addWhere("id = ".$request['id']);			
+		}
+		if( $request['nombre'] != ''){
+			$SentenciaSQL->addWhere(" nombre LIKE '%".$request['nombre']."%'");			
+		}
+		if( $request['descripcion'] != ''){
+			$SentenciaSQL->addWhere(" descripcion LIKE '%".$request['descripcion']."%'");			
+		}
 
-		require_once (FWK."/BaseDeDatos.class.php");
-		$miBD = new BaseDeDatos(PER."/config.txt");
-		$miBD->conectar();
-		$miBD->ejecutarSQL("select * from usuarios where id='".$par."';");
-		$resultado = $miBD->traerTodo();
-		$miBD->desconectar();
-		return $resultado[0];
+		// echo $SentenciaSQL->generar();
+		return self::ejecutarSQL($SentenciaSQL->generar());
 	}
 }
 ?>
