@@ -13,21 +13,23 @@ abstract class DominioFachada {
 		return PersistenciaFachada::traerUsuarios();
 	}
 	/** Retorna un array con hash */
-	public function traerUsuarioPorId($id){		
+	public function traerUsuarioPorId($id){
 		return PersistenciaFachada::traerUsuarioPorId($id);
 	}
 	/** Retorna un objeto único de tipo Usuario */
 	public function traerObjetoUsuarioPorId($id){
+
 		$encontrados = PersistenciaFachada::traerUsuarioPorId($id);
 		foreach( $encontrados as $usuario){
-			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);	
+			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);
 		}
+
 		return $unUsuario;
 	}
 	public function traerObjetoUsuario( $request ){
 		$encontrados = PersistenciaFachada::traerUsuario( $request );
 		foreach( $encontrados as $usuario){
-			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);	
+			$unUsuario = new Usuario($usuario['id'], $usuario['nombre'], $usuario['descripcion'], $usuario['ingreso']);
 		}
 		return $unUsuario;
 	}
