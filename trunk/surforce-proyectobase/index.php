@@ -19,18 +19,15 @@ class Index{
 			switch ($request['m']) {
 				case "listado_usuarios":
 					require_once( PRE . DIRECTORY_SEPARATOR . 'ListadoUsuarios.class.php' );
-					$ListadoUsuarios = new ListadoUsuarios();
-					$ListadoUsuarios->ejecutar();
+					ListadoUsuarios::ejecutar();
 					break;
 				case "consultar_usuario":
 					require_once( PRE . DIRECTORY_SEPARATOR . 'ConsultarUsuario.class.php' );
-					$ConsultarUsuario = new ConsultarUsuario();
-					$ConsultarUsuario->ejecutar();
+					ConsultarUsuario::ejecutar();
 					break;
 				case "mostrar_usuario":
 					require_once( PRE . DIRECTORY_SEPARATOR . 'MostrarUsuario.class.php' );
-					$MostrarUsuario = new MostrarUsuario();
-					$MostrarUsuario->ejecutar( $request );
+					MostrarUsuario::ejecutar( $request );
 					break;
 				default:
 					PresentacionFachada::mostrarTexto($this->titulo, $this->texto);
