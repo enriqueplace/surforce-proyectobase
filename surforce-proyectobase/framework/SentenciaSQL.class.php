@@ -41,9 +41,9 @@ class SentenciaSQL {
 	}
 	private function eliminarDuplicados(){
 		// eliminan duplicados
-		$this->colSelect = array_unique($this->colSelect);
-		$this->colFrom = array_unique($this->colFrom);
-		$this->colWhere = array_unique($this->colWhere);
+		if( isset( $this->colSelect ) ) $this->colSelect = array_unique($this->colSelect);
+		if( isset( $this->colFrom ) ) $this->colFrom = array_unique($this->colFrom);
+		if( isset( $this->colWhere ) ) $this->colWhere = array_unique($this->colWhere);
 	}
 	public function generar(){
 

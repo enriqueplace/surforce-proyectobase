@@ -22,31 +22,47 @@ abstract class PersistenciaFachada {
 		$miBD->desconectar();
 		return $resultado;
 	}
-	public function traerUsuarios(){		
-		return self::ejecutarSQL("SELECT * FROM usuarios;");		
+	public function traerUsuarios( $request = null ){
+		require_once( FWK . DIRECTORY_SEPARATOR . "SentenciaSQL.class.php");
+		$SentenciaSQL = new SentenciaSQL();
+
+		// Consulta base
+		$SentenciaSQL->addSelect("*");
+		$SentenciaSQL->addFrom("usuarios");
+
+		if( ( $request['id'] != "" ) ){
+			$SentenciaSQL->addWhere("id = ".$request['id']);
+		}
+		if( ( $request['nombre'] != "" ) ){
+			$SentenciaSQL->addWhere(" nombre LIKE '%".$request['nombre']."%'");
+		}
+		if( ( $request['descripcion'] != "" ) ){
+			$SentenciaSQL->addWhere(" descripcion LIKE '%".$request['descripcion']."%'");
+		}
+		return self::ejecutarSQL( $SentenciaSQL->generar() );
 	}
-	public function traerUsuarioPorId($id){	
-		return self::ejecutarSQL("SELECT * FROM usuarios WHERE id='".$id."';");		
+	public function traerUsuarioPorId($id){
+		return self::ejecutarSQL("SELECT * FROM usuarios WHERE id='".$id."';");
 	}
 	public function traerUsuario( $request ){
 		require_once( FWK . DIRECTORY_SEPARATOR . "SentenciaSQL.class.php");
 		$SentenciaSQL = new SentenciaSQL();
-		
-		// Consulta base	
+
+		// Consulta base
 		$SentenciaSQL->addSelect("id");
 		$SentenciaSQL->addSelect("nombre");
 		$SentenciaSQL->addSelect("descripcion");
 		$SentenciaSQL->addSelect("ingreso");
 		$SentenciaSQL->addFrom("usuarios");
-	
+
 		if( $request['id'] != ''){
-			$SentenciaSQL->addWhere("id = ".$request['id']);			
+			$SentenciaSQL->addWhere("id = ".$request['id']);
 		}
 		if( $request['nombre'] != ''){
-			$SentenciaSQL->addWhere(" nombre LIKE '%".$request['nombre']."%'");			
+			$SentenciaSQL->addWhere(" nombre LIKE '%".$request['nombre']."%'");
 		}
 		if( $request['descripcion'] != ''){
-			$SentenciaSQL->addWhere(" descripcion LIKE '%".$request['descripcion']."%'");			
+			$SentenciaSQL->addWhere(" descripcion LIKE '%".$request['descripcion']."%'");
 		}
 
 		// echo $SentenciaSQL->generar();

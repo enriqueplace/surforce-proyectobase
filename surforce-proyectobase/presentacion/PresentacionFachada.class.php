@@ -13,14 +13,14 @@ abstract class PresentacionFachada {
 		$miSmarty->display("sitio_estructura_estandar.tpl.html");
 	}
 	*/
-	public function listarUsuarios(){
+	public function listarUsuarios( $request = null ){
 		$miSmarty = new TemplateSmarty();
 		$miSmarty->assign("titulo", "Listado de usuarios");
-		$miSmarty->assign("usuarios", DominioFachada::traerUsuarios());
+		$miSmarty->assign("usuarios", DominioFachada::traerUsuarios( $request ));
 		$miSmarty->assign("sitio_contenido", "contenido_listado_usuarios.tpl.html");
 		$miSmarty->display("sitio_estructura_estandar.tpl.html");
 	}
-	
+
 	/*
 	public function mostrarUsuario($unUsuario){
 		$miSmarty = new TemplateSmarty();
@@ -30,14 +30,14 @@ abstract class PresentacionFachada {
 		$miSmarty->display("sitio_estructura_estandar.tpl.html");
 	}
 	*/
-	public function mostrarUsuario($request){		
+	public function mostrarUsuario($request){
 		$miSmarty = new TemplateSmarty();
-		$miSmarty->assign("titulo", " Usuario");
+		$miSmarty->assign("titulo", "Usuario");
 		$miSmarty->assign("usuario",DominioFachada::traerObjetoUsuario( $request ));
 		$miSmarty->assign("sitio_contenido", "contenido_mostrar_usuario.tpl.html");
 		$miSmarty->display("sitio_estructura_estandar.tpl.html");
 	}
-		
+
 	public function mostrarTexto($titulo, $texto){
 		$miSmarty = new TemplateSmarty();
 		$miSmarty->assign("titulo", $titulo);
@@ -51,6 +51,6 @@ abstract class PresentacionFachada {
 		$miSmarty->assign("sitio_contenido", "contenido_consultar_usuario.tpl.html");
 		$miSmarty->display("sitio_estructura_estandar.tpl.html");
 	}
-	
+
 }
 ?>

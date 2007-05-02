@@ -19,7 +19,7 @@ class Index{
 			switch ($request['m']) {
 				case "listado_usuarios":
 					require_once( PRE . DIRECTORY_SEPARATOR . 'ListadoUsuarios.class.php' );
-					ListadoUsuarios::ejecutar();
+					ListadoUsuarios::ejecutar( $request );
 					break;
 				case "consultar_usuario":
 					require_once( PRE . DIRECTORY_SEPARATOR . 'ConsultarUsuario.class.php' );
@@ -41,7 +41,7 @@ class Index{
 }
 
 $Index = new Index();
-$Index->ejecutar( $_GET );
+$Index->ejecutar( $_REQUEST );
 
 ?>
 
