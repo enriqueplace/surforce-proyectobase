@@ -1,25 +1,19 @@
 <b><!--{$titulo}--></b>
 
 <div>
-	<table border="1"> 
-		<tr>		
-			<td>usuario</td>
-	  		<td>nombre</td>
-	  		<td>ingreso</td>
-	  		<td>descripción</td>
-	  	</tr>
-	  	<tr>
+	<table cellpadding="5" cellspacing="5"> 
+
 	<!--{if is_object($usuario) }-->			
-	  		<td><!--{$usuario->getId()}--></td>
-	  		<td><!--{$usuario->getNombre()}--></td>
-	  		<td><!--{$usuario->getIngreso()}--></td>	  	
-	  		<td><!--{$usuario->getDescripcion()}--></td>	  	
+			<tr><th>id</th><td><!--{$usuario->getId()}--></td></tr>
+	  		<tr><th>nombre</th>	  		<td><!--{$usuario->getNombre()}--></td></tr>
+	  		<tr><th>ingreso</th>	  		<td><!--{$usuario->getIngreso()}--></td></tr>	  	
+	  		<tr><th>descripci&oacute;n</th>	  		<td><!--{$usuario->getDescripcion()}--></td></tr>
 	<!--{else}-->
-	  		<td><!--{$usuario.id}--></td>
-	  		<td><!--{$usuario.nombre}--></td>
-	  		<td><!--{$usuario.ingreso}--></td> 
-	  		<td><!--{$usuario.descripcion}--></td> 
+			<tr><th>id</th><td><!--{$usuario.id}--></td></tr>
+	  		<tr><th>nombre</th><td><!--{$usuario.nombre}--></td></tr>
+	  		<tr><th>ingreso</th><td><!--{$usuario.ingreso}--></td> </tr>
+	  		<tr><th>descripci&oacute;n</th><td><!--{$usuario.descripcion}--></td> </tr>
 	<!--{/if}-->
-		</tr>
+
 	</table>
 </div>

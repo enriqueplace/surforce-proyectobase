@@ -1,14 +1,22 @@
 <b><!--{$titulo}--></b>
 
 <div>
-	<table border="1" > 
+
+<!--{if count($usuarios) > 0}-->
+	<table border="0" cellpadding="5" cellspacing="5" > 
+		<tr>
+			<th>id</th><th>nombre</th><th>ingreso</th>
+		</tr>
 	<!--{foreach from=$usuarios item=linea}-->
 		<tr>
 	  		<td  class="listados"><a href="index.php?m=mostrar_usuario&id=<!--{$linea.id}-->"><!--{$linea.id}--></A></td>
-	  		<td> <!--{$linea.nombre}--></td>
+	  		<td> <a href="index.php?m=mostrar_usuario&id=<!--{$linea.id}-->"><!--{$linea.nombre}--></A></td>
 	  		<td><!--{$linea.ingreso}--></td>
 
 	  	</tr>
 	<!--{/foreach}-->
 	</table>
+<!--{else}-->	
+	<div>La consulta no produjo resultados</div>
+<!--{/if}-->	
 </div>

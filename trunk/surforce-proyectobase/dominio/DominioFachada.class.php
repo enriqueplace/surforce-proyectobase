@@ -9,8 +9,8 @@ require_once (DOM . DIRECTORY_SEPARATOR . "Usuario.class.php");
  * */
 abstract class DominioFachada {
 
-	public function traerUsuarios(){
-		return PersistenciaFachada::traerUsuarios();
+	public function traerUsuarios( $request = null ){
+		return PersistenciaFachada::traerUsuarios( $request );
 	}
 	/** Retorna un array con hash */
 	public function traerUsuarioPorId($id){
