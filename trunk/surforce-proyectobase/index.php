@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Index que inicia ejecución 3 capas
+ * */
 class Index{
 	private $titulo;
 	private $text;
